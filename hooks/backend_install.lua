@@ -1,9 +1,8 @@
-local util = require("hooks.util")
-local cmd = require("cmd")
-local http = require("http")
-local sep = package.config:sub(1,1)
-
 function PLUGIN:BackendInstall(ctx)
+  local util = require("hooks.util")
+  local cmd = require("cmd")
+  local http = require("http")
+  local sep = package.config:sub(1,1)
   local tool = ctx.tool
   local version = ctx.version
   local base_dir = ctx.install_path
@@ -40,6 +39,10 @@ function PLUGIN:BackendInstall(ctx)
 end
 
 local function get_os_type()
+  local util = require("hooks.util")
+  local cmd = require("cmd")
+  local http = require("http")
+  local sep = package.config:sub(1,1)
   if sep == "\\" then return "windows" end
   local uname = cmd.exec("uname -s"):lower()
   if uname:find("linux") then return "linux"
