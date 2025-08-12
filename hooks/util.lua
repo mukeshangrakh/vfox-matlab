@@ -1,3 +1,7 @@
+local util = require("hooks.util")
+local cmd = require("cmd")
+local http = require("http")
+local sep = package.config:sub(1,1)
 local json = require("json")
 local crypto = require("crypto")
 

@@ -3,15 +3,7 @@ local cmd = require("cmd")
 local http = require("http")
 local sep = package.config:sub(1,1)
 
-local function get_os_type()
-  if sep == "\\" then return "windows" end
-  local uname = cmd.exec("uname -s"):lower()
-  if uname:find("linux") then return "linux"
-  elseif uname:find("darwin") or uname:find("mac") then return "darwin"
-  else return uname end
-end
-
-return function(ctx)
+function PLUGIN:BackendInstall(ctx)
   local tool = ctx.tool
   local version = ctx.version
   local base_dir = ctx.install_path
@@ -45,4 +37,12 @@ return function(ctx)
 
   print("[INFO] MATLAB environment ready at: " .. env_dir)
   return {}
+end
+
+local function get_os_type()
+  if sep == "\\" then return "windows" end
+  local uname = cmd.exec("uname -s"):lower()
+  if uname:find("linux") then return "linux"
+  elseif uname:find("darwin") or uname:find("mac") then return "darwin"
+  else return uname end
 end

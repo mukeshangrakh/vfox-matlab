@@ -1,6 +1,4 @@
-local util = require("hooks.util")
-
-return function(ctx)
+function PLUGIN:BackendExecEnv(ctx)
   local install_path = ctx.install_path
   return {
     env_vars = {
